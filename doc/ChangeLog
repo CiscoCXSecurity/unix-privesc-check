@@ -1,3 +1,82 @@
+2025-03-29 unix-privesc-check maaster
+
+* Fixed typos
+* Fixed ChangeLog
+
+-- Tim Brown <timb@nth-dimension.org.uk>
+
+2021-02-07 unix-privesc-check master
+
+* Merge pull request #50 from cedriczirtacic/patch-1
+
+-- Tim Brown <timb@nth-dimension.org.uk>
+
+2018-03-11 unix-privesc-check maaster
+
+* banned.h non-existent on download.microsoft.com
+
+-- cedriczirtacic <cedriczirtacic@users.noreply.github.com>
+
+2017-09-04 unix-privesc-check master
+
+* Merge pull request #46 from joncave/privileged_writable-logic
+ * Improve logic of privileged_writable
+
+-- Tim Brown <timb@nth-dimension.org.uk>
+
+2015-09-18 unix-privesc-check master
+
+* Merge pull request #45 from joncave/gnu-which
+ * Bug fix: Make file_show_real_filename account for output of /usr/bin/which on RHEL6
+
+-- Tim Brown <timb@nth-dimension.org.uk>
+
+2015-07-31 unix-privesc-check master
+
+* Upate README.md
+
+-- <pentestmonkey@pentestmonkey.net>
+
+2016-04-23 unix-privesc-check master
+
+* Improve logic of privileged_writable
+ * Raise alerts in a number of extra situations:
+  * If a low privileged user can write to a file there should always be a
+    warning, not just if YOU are the current owner. If the tool is being run
+    by root for auditing purposes then it's important to show if a standard
+    user can write to a script they're permitted to run with elevated
+    permissions
+  * Furthermore, if a low privileged user owns a privileged file then it
+    should be reported no matter what the current permissions are. The owner
+    can simply set the write permission if they wish.
+  * Similarly to (1), if an untrusted group can write to a privileged
+    file then it should be a warning even if the current user isn't a member
+    of the group
+* Implement group_is_root()
+ * Unable to use numeric arguments with id (i.e. `id -g -n 0`) as
+   support for this was added in September 2013 and is not available in a
+   number of common distros yet
+* Standardise misc user privilege functions
+ * Switch user_is_root() and user_is_user_root() to match other
+   user_is_user_*() functions which check the current user rather than a
+   supplied user name
+ * Improve user_is_root() by checking if the supplied user's ID is 0 rather
+   than checking the name is "root"
+* Fix parsing of GNU which output
+   The GNU version of which outputs error messages as follows:
+   $ which aaaaaa
+   which: no aaaaaa in ...
+   Note that the error message that starts with "no" is preceded by
+   "which: "
+
+-- joncave <joncave@users.noreply.github.com>
+
+2015-03-22 unix-privesc-check master
+
+* Create README.md
+
+-- <pentestmonkey@pentestmonkey.net>
+
 2015-01-06 unix-privesc-check trunk
 
 * Cleaned up file structure
@@ -9,6 +88,14 @@
 * Bug fix: Output erronous value where value is not a string
 * Bug fix: Make file cache filename less racey
 * Bug fix: Make privileged cache filename less racey
+
+-- Tim Brown <timb@nth-dimension.org.uk>
+
+2013-03-22 unix-privesc-check trunk
+
+* Updated attack_surface type
+
+-- Bernardo Damele A. G. <bernardo.damele@gmail.com>
 
 2012-11-14 unix-privesc-check trunk
 
