@@ -1,7 +1,9 @@
 2025-03-29 unix-privesc-check maaster
 
-* Fixed typos
-* Fixed ChangeLog
+* Fixed doc/ChangeLog
+ * Fixed typos
+ * Added missing log entries
+* Updated doc/AUTHORS
 
 -- Tim Brown <timb@nth-dimension.org.uk>
 
